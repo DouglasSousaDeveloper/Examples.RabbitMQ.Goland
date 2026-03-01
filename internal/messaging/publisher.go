@@ -7,24 +7,24 @@ import (
 	"github.com/rabbitmq/amqp091-go"
 )
 
-type Producer struct {
+type Publisher struct {
 	channel  *amqp091.Channel
 	exchange string
 }
 
-func NewProducer(conn *amqp091.Connection, exchange string) (*Producer, error) {
+func NewPublisher(conn *amqp091.Connection, exchange string) (*Publisher, error) {
 	ch, err := conn.Channel()
 	if err != nil {
 		return nil, err
 	}
 
-	return &Producer{
+	return &Publisher{
 		channel:  ch,
 		exchange: exchange,
 	}, nil
 }
 
-func (p *Producer) Publish(routingKey string, message any) error {
+func (p *Publisher) Publish(routingKey string, message any) error {
 	body, err := json.Marshal(message)
 	if err != nil {
 		return err

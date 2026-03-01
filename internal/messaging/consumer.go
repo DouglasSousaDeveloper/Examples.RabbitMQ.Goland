@@ -1,6 +1,8 @@
 package messaging
 
-import "github.com/rabbitmq/amqp091-go"
+import (
+	"github.com/rabbitmq/amqp091-go"
+)
 
 type Consumer struct {
 	channel *amqp091.Channel
