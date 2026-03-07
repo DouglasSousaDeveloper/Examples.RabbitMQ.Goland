@@ -14,7 +14,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	consumer, err := messaging.NewConsumer(conn, "customer.queue")
+	consumer, err := messaging.NewConsumer(conn, "billing.queue")
 	if err != nil {
 		log.Fatal(err)
 	}
