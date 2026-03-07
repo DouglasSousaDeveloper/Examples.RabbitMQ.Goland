@@ -15,14 +15,14 @@ func main() {
 	}
 	defer conn.Close()
 
-	publisher, err := messaging.NewPublisher(conn, "customer.exchange")
+	publisher, err := messaging.NewPublisher(conn, "billing.exchange")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	customer := domain.GenerateFake(nil)
 
-	err = publisher.Publish("customer.created", customer)
+	err = publisher.Publish("billing.created", customer)
 	if err != nil {
 		log.Fatal(err)
 	}
